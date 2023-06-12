@@ -2,14 +2,14 @@ import CONFIG from '../../globals/config';
 
 const createRestaurantItemTemplate = (restaurant) => `
   <article class="restaurant-item">
-    <a href="/#/detail/${restaurant.id}">
       <img class="restaurant-item-thumbnail" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" crossorigin="anonymous">
       <div class="restaurant-item-content">
         <p class="restaurant-item-city">${restaurant.city}  <span class="restaurant-item-rating" aria-label="rating restaurant ${restaurant.rating}"><i class="fa fa-star"></i>${restaurant.rating}</span></p>
-        <h3 class="restaurant-item-name">${restaurant.name}</h3>
+        <h3 class="restaurant-item-name">
+        <a href="/#/detail/${restaurant.id}">${restaurant.name}</a>
+        </h3>
         <h4 class="restaurant-item-description">${restaurant.description}</h4>
       </div>
-    </a>
   </article>
 `;
 
