@@ -16,20 +16,20 @@ Scenario('liking one restaurant', async ({ I }) => {
   
   I.amOnPage('/');
 
-  I.waitForElement('.restaurant-item-name');
-  I.see('.restaurant-item-name');
+  I.waitForElement('.restaurant-item-name a');
+  I.see('.restaurant-item-name a');
 
-  const firstRestaurants = locate('.restaurant-item-name').first();
+  const firstRestaurants = locate('.restaurant-item-name a').first();
   const firstRestaurantsTitle = await I.grabTextFrom(firstRestaurants);
   I.click(firstRestaurants);
 
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
+  I.amOnPage('/#/favorites');
+  I.seeElement('.restaurant-item');
+
   const likedRestaurantsTitle = await I.grabTextFrom('.restaurant-item-name');
 
   assert.strictEqual(firstRestaurantsTitle, likedRestaurantsTitle);
-  
-
-  // … kita akan mengisi uji coba berikutnya …
 });
