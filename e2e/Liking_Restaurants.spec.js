@@ -12,18 +12,24 @@ Scenario('showing empty liked restaurants', ({ I }) => {
 });
 
 Scenario('liking one restaurant', async ({ I }) => {
-  const firstResto = locate('.restaurant-item-name').first();
-  const firstRestoTitle = await I.grabTextFrom(firstResto);
-  I.click(firstResto);
+  I.see('There is no Favorit restaurant yet');
+  
+  I.amOnPage('/');
+
+  I.waitForElement('.restaurant-item-name');
+  I.see('.restaurant-item-name');
+
+  const firstRestaurants = locate('.restaurant-item-name').first();
+  const firstRestaurantsTitle = await I.grabTextFrom(firstRestaurants);
+  I.click(firstRestaurants);
 
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
-  I.amOnPage('/#/favorites');
-  I.waitForElement('.restaurant-item-name');
-  I.seeElement('.restaurant-item');
-  const likedRestoTitle = await I.grabTextFrom('.restaurant-item-name');
+  const likedRestaurantsTitle = await I.grabTextFrom('.restaurant-item-name');
 
-  assert.strictEqual(firstRestoTitle, likedRestoTitle);
+  assert.strictEqual(firstRestaurantsTitle, likedRestaurantsTitle);
+  
+
   // … kita akan mengisi uji coba berikutnya …
 });
