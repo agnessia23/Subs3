@@ -22,7 +22,9 @@ const Favorites = {
 
     if (!restaurants.length) {
       mainContainer.innerHTML += `
+      <div>
         <p>There is no Favorit restaurant yet</p>
+      </div>
       `; 
     }
 

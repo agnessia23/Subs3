@@ -4,12 +4,10 @@ import { createRestaurantItemTemplate } from '../templates/template-creator';
 const ListResto = {
   async render() {
     return `
-      <main id="main" tabindex="0">
         <section class="content">
           <h2 class="list-restaurant-label">These restaurants may suit you. Let's check them out</h2>
           <div class="list-restaurant"></div>
         </section>
-      </main>
     `;
   },
 
